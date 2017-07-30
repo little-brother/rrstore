@@ -1,0 +1,18 @@
+{
+  "name": "rrstore",
+  "version": "0.1.0",
+  "description": "Simple round-robin store for numeric value",
+  "main": "index.js",
+  "keywords": [
+    "round robin"
+  ],
+  "author": {
+    "name": "little-brother",
+    "email": "lb.im@ya.ru"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/little-brother/rrstore"
+  },
+  "license": "MIT"
+}
