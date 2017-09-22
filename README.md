@@ -1,5 +1,5 @@
 # RRStore
-Simple round-robin store for numeric value.
+Simple round-robin in-memory store for numeric value.
 
 ## Install 
 
@@ -22,6 +22,9 @@ console.log(store.sum) // 4
 console.log(store.min) // 1
 console.log(store.max) // 3
 console.log(store.last) // 3
+
+store.pust('text2');
+console.log(store.lastNum); // 3
 ...
 var store = new RRStore([3, 'text', 1]);
 store.push(4); 

@@ -9,6 +9,7 @@ function RRStore(opts) {
 	this.iMax = 0;
 	this.count = 0; // Count of non-NaN elements
 	this.sum = NaN;
+	this.lastNum = NaN;	
 	Object.defineProperty(this, 'avg', {get: () => this.sum / this.count});
 	Object.defineProperty(this, 'min', {get: () => this.arr[this.iMin]});
 	Object.defineProperty(this, 'max', {get: () => this.arr[this.iMax]});
@@ -22,13 +23,14 @@ RRStore.prototype.push = function (e) {
 	this.arr[i] = isNaN(e) ? NaN : e;
 	this.i = i;
 
-	// sum, avg
+	// sum, avg, lastNum
 	if (!isNaN(prev)) {
 		this.count--;
 		this.sum = (this.count == 0) ? NaN : this.sum - prev;
 	}
 
 	if (!isNaN(e)) {
+		this.lastNum = e;
 		this.count++;
 		this.sum = isNaN(this.sum) ? e : this.sum + e;
 	}
