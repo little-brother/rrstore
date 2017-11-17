@@ -16,14 +16,19 @@ store.push(4);
 store.push(1); 
 store.push('text'); 
 store.push(3); // override first value
+
 // Result store is [3, 1, NaN]
+console.log(store.toString()) // [1, NaN, 3]
 console.log(store.avg) // 2
 console.log(store.sum) // 4
 console.log(store.min) // 1
 console.log(store.max) // 3
-console.log(store.last) // 3
+console.log(store.last()) // 3
+console.log(store.last(1)) // [3]
+console.log(store.last(2)) // [NaN, 3]
 
-store.pust('text2');
+
+store.push('text2');
 console.log(store.lastNum); // 3
 ...
 var store = new RRStore([3, 'text', 1]);

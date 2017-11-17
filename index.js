@@ -13,8 +13,27 @@ function RRStore(opts) {
 	Object.defineProperty(this, 'avg', {get: () => this.sum / this.count});
 	Object.defineProperty(this, 'min', {get: () => this.arr[this.iMin]});
 	Object.defineProperty(this, 'max', {get: () => this.arr[this.iMax]});
-	Object.defineProperty(this, 'last', {get: () => this.arr[this.i]});
-} 
+}
+
+RRStore.prototype.toString = function () {
+	return '[ ' + this.last(this.arr.length).join(', ') + ' ]';
+}
+
+RRStore.prototype.last = function (k) {		
+	let i = this.i;
+	let arr = this.arr;
+
+	if (!k || k < 0 || isNaN(k))
+		return arr[i];
+
+	if (k == 1)
+		return [arr[i]];
+
+	if (k > arr.length)	
+		k = arr.length;
+	
+	return (i < k) ? arr.slice(i - k + 1).concat(arr.slice(0, i + 1)) : arr.slice(i - k + 1, i + 1);
+}
 
 RRStore.prototype.push = function (e) {
 	let i = (this.i + this.arr.length + 1) % this.arr.length;

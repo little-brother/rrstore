@@ -1,6 +1,6 @@
 {
   "name": "rrstore",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Simple round-robin in-memory store for numeric value",
   "main": "index.js",
   "keywords": [
