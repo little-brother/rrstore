@@ -13,6 +13,7 @@ function RRStore(opts) {
 	Object.defineProperty(this, 'avg', {get: () => this.sum / this.count});
 	Object.defineProperty(this, 'min', {get: () => this.arr[this.iMin]});
 	Object.defineProperty(this, 'max', {get: () => this.arr[this.iMax]});
+	Object.defineProperty(this, 'length', {get: () => this.arr.length});
 }
 
 RRStore.prototype.toString = function () {
@@ -32,7 +33,7 @@ RRStore.prototype.last = function (k) {
 	if (k > arr.length)	
 		k = arr.length;
 	
-	return (i < k) ? arr.slice(i - k + 1).concat(arr.slice(0, i + 1)) : arr.slice(i - k + 1, i + 1);
+	return (i < k) ? arr.slice(this.arr.length + i - k + 1).concat(arr.slice(0, i + 1)) : arr.slice(i - k + 1, i + 1);
 }
 
 RRStore.prototype.push = function (e) {
